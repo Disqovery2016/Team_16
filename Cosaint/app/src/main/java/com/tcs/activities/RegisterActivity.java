@@ -156,7 +156,7 @@ public class RegisterActivity extends AppCompatActivity {
         if (TextUtils.isEmpty(userId)){
             userId = databaseReference.push().getKey();
         }
-        Users user = new Users(name, mobile, email);
+        Users user = new Users(name, mobile, email, null, null);
         databaseReference.child(userId).setValue(user);
         addUserChangeListener();
     }

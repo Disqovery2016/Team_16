@@ -4,6 +4,9 @@
     android:layout_height="match_parent"
     android:background="@drawable/bg_gradient">
 
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar"/>
 
     <TextView
         android:id="@+id/txtSpeechInput"

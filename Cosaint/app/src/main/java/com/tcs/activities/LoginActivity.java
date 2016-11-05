@@ -48,7 +48,6 @@ public class LoginActivity extends AppCompatActivity {
     private SessionManager sessionManager;
 
 
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -89,11 +88,11 @@ public class LoginActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (etEmail.getText().toString().equals("")){
+                if (etEmail.getText().toString().equals("")) {
                     Snackbar.show(LoginActivity.this, getString(R.string.no_text));
                 }
 
-                if (etPassword.getText().toString().equals("")){
+                if (etPassword.getText().toString().equals("")) {
                     Snackbar.show(LoginActivity.this, getString(R.string.no_text));
                 }
                 progressBar.setVisibility(View.VISIBLE);
@@ -103,10 +102,9 @@ public class LoginActivity extends AppCompatActivity {
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 progressBar.setVisibility(View.GONE);
                                 sessionManager.setLogin(true);
-                                if (!task.isSuccessful()){
+                                if (!task.isSuccessful()) {
                                     Snackbar.show(LoginActivity.this, getString(R.string.failed));
-                                }
-                                else {
+                                } else {
                                     startActivity(new Intent(LoginActivity.this, EmergencyContactsActivity.class));
                                     finish();
                                 }

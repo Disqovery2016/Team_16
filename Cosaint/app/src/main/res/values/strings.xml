@@ -30,4 +30,6 @@
     <string name="add_emergency">Add Emergency Contacts</string>
     <string name="get_my_money">Reset Password</string>
     <string name="already_registered">User Is Already Registered</string>
+    <string name="profile">Profile</string>
+    <string name="logout">Log Out</string>
 </resources>

@@ -7,4 +7,14 @@
         app:showAsAction="never"
         android:title="@string/action_settings"/>
 
+    <item
+        android:id="@+id/profile"
+        app:showAsAction="never"
+        android:title="@string/profile"/>
+
+    <item
+        android:id="@+id/logout"
+        app:showAsAction="never"
+        android:title="@string/logout"/>
+
 </menu>
