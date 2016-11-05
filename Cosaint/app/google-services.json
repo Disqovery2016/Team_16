@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "336670505139",
+    "firebase_url": "https://cosaint-4227a.firebaseio.com",
+    "project_id": "cosaint-4227a",
+    "storage_bucket": "cosaint-4227a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:336670505139:android:6f770d48f66cdd04",
+        "android_client_info": {
+          "package_name": "com.tcs"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "336670505139-iml5ba9al6knpsktdtek1pac73i1l23n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDFHUwQDbwzfKbw7I8lBa4fM8Kyk_x_RgQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

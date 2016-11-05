@@ -45,6 +45,8 @@ public class SpeechActivity extends AppCompatActivity {
         populate();
     }
 
+    //Inititalising the variables using butterknife
+
     private void populate() {
         ButterKnife.bind(this);
 
@@ -56,6 +58,9 @@ public class SpeechActivity extends AppCompatActivity {
         });
     }
 
+    /*
+    *   opening prompt for speech input method
+    */
     private void promptSpeechInput() {
         Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
         intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
@@ -79,7 +84,12 @@ public class SpeechActivity extends AppCompatActivity {
                     ArrayList<String> result = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
                     txtSpeechInput.setText(result.get(0));
 
-                    if (txtSpeechInput.getText().toString().equals("help")){
+                    if (txtSpeechInput.getText().toString().equals("help") || txtSpeechInput.getText().toString().equals("i need help")
+                            || txtSpeechInput.getText().toString().equals("help me")
+                            || txtSpeechInput.getText().toString().equals("please help")
+                            || txtSpeechInput.getText().toString().equals("need help")
+                            || txtSpeechInput.getText().toString().equals("somebody please help")
+                            || txtSpeechInput.getText().toString().equals("somebody help me")) {
                         startActivity(new Intent(SpeechActivity.this, CameraActivity.class));
                     }
                 }
@@ -88,6 +98,8 @@ public class SpeechActivity extends AppCompatActivity {
         }
     }
 
+
+    //Menu options
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -95,4 +107,10 @@ public class SpeechActivity extends AppCompatActivity {
         return true;
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+    }
 }
+

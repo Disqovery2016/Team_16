@@ -32,13 +32,12 @@ public class CameraActivity extends AppCompatActivity {
 
     //activity request codes
     private static final int CAMERA_CAPTURE_IMAGE_REQUEST_CODE = 100;
-    private static final int CAMERA_CAPTURE_VIDEO_REQUEST_CODE = 200;
     private static final int MEDIA_TYPE_IMAGE = 1;
 
-    // directory name to store captured images and videos
-    private static final String IMAGE_DIRECTORY_NAME = "Hello Camera";
+    // directory name to store captured images
+    private static final String IMAGE_DIRECTORY_NAME = "Camera";
 
-    private Uri fileUri; // file url to store image/video
+    private Uri fileUri;
 
     @Bind(R.id.imgPreview)
     ImageView imgPreview;
@@ -58,7 +57,6 @@ public class CameraActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(),
                     "Sorry! Your device doesn't support camera",
                     Toast.LENGTH_LONG).show();
-            // will close the app if the device does't have camera
             finish();
         }
 
@@ -70,7 +68,7 @@ public class CameraActivity extends AppCompatActivity {
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         fileUri = getOutputMediaFileUri(MEDIA_TYPE_IMAGE);
         intent.putExtra(MediaStore.EXTRA_OUTPUT, fileUri);
-        startActivityForResult(intent, CAMERA_CAPTURE_VIDEO_REQUEST_CODE);
+        startActivityForResult(intent, CAMERA_CAPTURE_IMAGE_REQUEST_CODE);
     }
 
     /**
@@ -92,19 +90,14 @@ public class CameraActivity extends AppCompatActivity {
      */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        // if the result is capturing Image
         if (requestCode == CAMERA_CAPTURE_IMAGE_REQUEST_CODE) {
             if (resultCode == RESULT_OK) {
-                // successfully captured the image
-                // display it in image view
                 previewCapturedImage();
             } else if (resultCode == RESULT_CANCELED) {
-                // user cancelled Image capture
                 Toast.makeText(getApplicationContext(),
                         "User cancelled image capture", Toast.LENGTH_SHORT)
                         .show();
             } else {
-                // failed to capture image
                 Toast.makeText(getApplicationContext(),
                         "Sorry! Failed to capture image", Toast.LENGTH_SHORT)
                         .show();
@@ -129,7 +122,6 @@ public class CameraActivity extends AppCompatActivity {
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
 
-        // get the file url
         fileUri = savedInstanceState.getParcelable("file_uri");
     }
 
@@ -177,10 +169,8 @@ public class CameraActivity extends AppCompatActivity {
      */
     private void previewCapturedImage() {
         try {
-            // hide video preview
             imgPreview.setVisibility(View.VISIBLE);
 
-            // bimatp factory
             BitmapFactory.Options options = new BitmapFactory.Options();
 
             // downsizing image as it throws OutOfMemory Exception for larger
@@ -194,5 +184,13 @@ public class CameraActivity extends AppCompatActivity {
         } catch (NullPointerException e) {
             e.printStackTrace();
         }
+    }
+
+
+    //opening the previous activity upon pressing back button
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(this, SpeechActivity.class));
     }
 }

@@ -6,7 +6,10 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:statusBarColor">@android:color/transparent</item>
+    </style>
+
+    <style name="button" parent="@android:style/Widget.Button">
+        <item name="com.tcs:font">fonts/Whitney-Book-Bas.otf</item>
     </style>
 
 </resources>
